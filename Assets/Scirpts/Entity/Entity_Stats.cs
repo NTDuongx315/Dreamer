@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Entity_Stats : MonoBehaviour
 {
@@ -11,18 +12,30 @@ public class Entity_Stats : MonoBehaviour
 
     public float GetMaxHealth()
     {
-        float baseHP = maxHealth.getValue();
-        float bonusHP = major.vitality.getValue() * 5;
+        float baseMaxHealth = maxHealth.getValue();
+        float bonusMaxHealth = major.vitality.getValue() * 5;
         
-        return baseHP + bonusHP;
+        float totalMaxHealth = baseMaxHealth + bonusMaxHealth;
+        return totalMaxHealth;
     }
 
-    public float GetStrength()
+    public float GetDamage(out bool isCrit)
     {
         float baseDamage = defaultDamage.getValue();
-        float bonusDamage = major.strength.getValue() * 2;
+        float bonusDamage = major.strength.getValue();
+        float totalBaseDamage = baseDamage + bonusDamage;
+
+        float baseCritChance = offense.critRate.getValue();
+        float bonusCritChance = major.agility.getValue() * .3f;
+        float totalCritChance = baseCritChance + bonusCritChance;
         
-        return baseDamage + bonusDamage;
+        float baseCritDamage = offense.critDamage.getValue();
+        float bonusCritDamage = major.strength.getValue() * .5f;
+        float totalCritDamage = (baseCritDamage + bonusCritDamage) / 100;
+
+        isCrit = Random.Range(0,100) < totalCritChance;
+        float outputDamage = isCrit ? totalBaseDamage * totalCritDamage : totalBaseDamage;
+        return outputDamage;
     }
 
     public float GetEvasion()

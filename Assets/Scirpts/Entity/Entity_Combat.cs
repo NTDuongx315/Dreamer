@@ -15,8 +15,6 @@ public class Entity_Combat : MonoBehaviour
     {
         entityVFX = GetComponent<Entity_VFX>();
         stat = GetComponent<Entity_Stats>();
-
-        damage = stat.GetStrength();
     }
     public void PerformAttack()
     {
@@ -25,7 +23,8 @@ public class Entity_Combat : MonoBehaviour
             IDamagAble damagAble = target.GetComponent<IDamagAble>();
             
             if (damagAble == null) continue;//skip target, go to next target
-            bool targetGotHit = damagAble.TakeDamage(damage,transform);
+            float damage = stat.GetDamage(out bool isCrit);
+            bool targetGotHit = damagAble.TakeDamage(damage, transform);
             //interface sẽ thay thế nhiệm vụ gọi hàm TakeDamage, cơ chế chính của interface là bắt buộc phải set 1 
             //function cố dịnh cho nó trước và yêu cầu bắt buộc các object nếu muốn được gọi phải chứa function đó 
             //bằng cách getComponent thông qua interface, nó sẽ lấy chính xác và duy nhất function được tạo đó 
@@ -39,7 +38,7 @@ public class Entity_Combat : MonoBehaviour
             // if(targetHealth != null)
             //     targetHealth?.TakeDamage(damage, transform);
             if(targetGotHit)
-                entityVFX.CreateOnHitVfx(target.transform);
+                entityVFX.CreateOnHitVfx(target.transform, isCrit);
         }
     }
 
