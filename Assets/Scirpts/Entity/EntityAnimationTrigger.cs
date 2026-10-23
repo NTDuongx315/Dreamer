@@ -1,0 +1,24 @@
+using System;
+using UnityEngine;
+
+public class EntityAnimationTrigger : MonoBehaviour
+{
+    private Entity entity;
+    private Entity_Combat entityCombat;
+
+    protected virtual void Awake()
+    {
+        entity = GetComponentInParent<Entity>();
+        entityCombat = GetComponentInParent<Entity_Combat>();
+    }
+
+    private void attackStop()
+    {
+        entity.currentAnimationTrigger();
+    }
+
+    private void attackTrigger()
+    {
+        entityCombat.PerformAttack();
+    }
+}
