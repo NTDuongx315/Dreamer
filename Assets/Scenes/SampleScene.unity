@@ -1764,6 +1764,7 @@ MonoBehaviour:
   onDamageVfxDuration: 0.15
   hitVfxColor: {r: 1, g: 1, b: 1, a: 1}
   hitVfx: {fileID: 4117358109760959108, guid: eaec7c41a13f89242ad9aab23d8533e1, type: 3}
+  critHitVfx: {fileID: 7082836351017490847, guid: d7e0a2e96eb724d4eab7bb16f682becc, type: 3}
 --- !u!114 &1169564288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1812,9 +1813,9 @@ MonoBehaviour:
     damage:
       baseValue: 0
     critDamage:
-      baseValue: 0
+      baseValue: 150
     critRate:
-      baseValue: 0
+      baseValue: 100
     iceDamage:
       baseValue: 0
     fireDamage:
@@ -4963,7 +4964,7 @@ MonoBehaviour:
   currentHealth: 0
   isDead: 0
   knockbackPower: {x: 1.5, y: 2.5}
-  heavyKnockbackPower: {x: 7, y: 7}
+  heavyKnockbackPower: {x: 4, y: 4}
   knockBackDuration: 0.2
   heavyKnockbackDuration: 0.5
   heavyAttackThreshold: 0.3
@@ -4983,6 +4984,7 @@ MonoBehaviour:
   onDamageVfxDuration: 0.15
   hitVfxColor: {r: 1, g: 1, b: 1, a: 1}
   hitVfx: {fileID: 4117358109760959108, guid: eaec7c41a13f89242ad9aab23d8533e1, type: 3}
+  critHitVfx: {fileID: 0}
 --- !u!114 &1838112586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5502,6 +5504,7 @@ MonoBehaviour:
   onDamageVfxDuration: 0.2
   hitVfxColor: {r: 1, g: 1, b: 1, a: 1}
   hitVfx: {fileID: 0}
+  critHitVfx: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
