@@ -8,6 +8,7 @@ public class Stat_OffensiveGroup
     public Stat damage;
     public Stat critDamage;
     public Stat critRate;
+    public Stat armorReduction;
     
     //Elemental Damage
     public Stat iceDamage;

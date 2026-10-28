@@ -5,7 +5,6 @@ using Random = UnityEngine.Random;
 public class Entity_Stats : MonoBehaviour
 {
     public Stat maxHealth;
-    public Stat defaultDamage;
     public Stat_MajorGroup major;
     public Stat_OffensiveGroup offense;
     public Stat_DeffenseGroup deffense;
@@ -19,9 +18,10 @@ public class Entity_Stats : MonoBehaviour
         return totalMaxHealth;
     }
 
+
     public float GetDamage(out bool isCrit)
     {
-        float baseDamage = defaultDamage.getValue();
+        float baseDamage = offense.damage.getValue();
         float bonusDamage = major.strength.getValue();
         float totalBaseDamage = baseDamage + bonusDamage;
 
@@ -50,5 +50,26 @@ public class Entity_Stats : MonoBehaviour
         //the function Clamp() will return evasionCap if its value is in range 0->totalEvasion;
         //if it is greater than totalEvasion then return totalEvasion, if less than 0 then return 0.
         return finalEvasion;
+    }
+
+    public float GetArmorMitigation(float armorReduction)
+    {
+        float baseArmor = deffense.armor.getValue();
+        float bonusArmor = major.vitality.getValue();
+        float totalArmor = baseArmor + bonusArmor;
+        
+        float reductionMultiplier = Mathf.Clamp(1 - armorReduction, 0, 1);
+        float effectiveArmor = totalArmor * reductionMultiplier;
+        
+        float mitigation = effectiveArmor / (effectiveArmor + 100);
+        float mitigationCap = .85f;
+        
+        float finalArmor = Math.Clamp(mitigationCap, 0, mitigation);
+        return finalArmor;
+    }
+    public float getArmorReduction()
+    {
+        float finalReduction = offense.armorReduction.getValue() / 100;
+        return finalReduction;
     }
 }
