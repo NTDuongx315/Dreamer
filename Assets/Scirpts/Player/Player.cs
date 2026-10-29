@@ -29,7 +29,7 @@ public class Player : Entity
     [Header("Movement deatails")] 
     public float moveSpeed;
     public float jumpForce = 10;
-    public Vector2 wallJumpDir;
+    public Vector2 wallJumpForce;
     
     [Range(0,1)]
     public float inAirMoveMultiplier = .7f;
@@ -61,6 +61,41 @@ public class Player : Entity
         jumpAttackState = new PlayerJumpAttackState(this, stateMachine, "jumpAttack");
         deathState = new PlayerDeathState(this, stateMachine, "dead");
         parryState = new Player_ParryState(this, stateMachine, "counter");
+    }
+    
+    protected override IEnumerator EntitySlowDownCo(float duration, float slowMultiplier)
+    { 
+        float originalMoveSpeed = moveSpeed;
+        float originalAnimSpeed = anim.speed;
+        float originalJumpForce = jumpForce;
+        Vector2 originalWallJump = wallJumpForce;
+        Vector2 originalJumpAttack = jumpAttackVelocity;
+        Vector2[] originalAttackSpeed = new Vector2[attackVelocity.Length];
+        Array.Copy(attackVelocity,originalAttackSpeed, attackVelocity.Length);
+        
+        float speedMultiplier = 1 - slowMultiplier;
+        
+        moveSpeed = originalMoveSpeed * speedMultiplier;
+        anim.speed = originalAnimSpeed * speedMultiplier;
+        jumpForce = originalJumpForce * speedMultiplier;
+        wallJumpForce = originalWallJump * speedMultiplier;
+        jumpAttackVelocity = originalJumpAttack  * speedMultiplier;
+        for (int i = 0; i < attackVelocity.Length; i++)
+        {
+            attackVelocity[i] = attackVelocity[i] * speedMultiplier;
+        }
+        
+        yield return new WaitForSeconds(duration);
+        
+        moveSpeed = originalMoveSpeed;
+        anim.speed = originalAnimSpeed;
+        jumpForce = originalJumpForce;
+        wallJumpForce = originalWallJump;
+        jumpAttackVelocity = originalJumpAttack;
+        for (int i = 0; i < attackVelocity.Length; i++)
+        {
+            attackVelocity[i] = originalAttackSpeed[i];
+        }
     }
 
     public override void EntityDeath()

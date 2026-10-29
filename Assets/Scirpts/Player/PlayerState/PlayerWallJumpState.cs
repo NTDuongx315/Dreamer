@@ -9,7 +9,7 @@ public class PlayerWallJumpState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        player.setVelocity(player.wallJumpDir.x * -player.facingDir, player.wallJumpDir.y);
+        player.setVelocity(player.wallJumpForce.x * -player.facingDir, player.wallJumpForce.y);
     }
 
     public override void Update()
