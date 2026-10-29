@@ -51,7 +51,7 @@ public class Entity_Stats : MonoBehaviour
         return outputDamage;
     }
 
-    public float GetElementalDamage()
+    public float GetElementalDamage(out ElementalType  elementalType)
     {
         float fireDamage = offense.fireDamage.getValue();
         float iceDamage = offense.iceDamage.getValue();
@@ -59,10 +59,23 @@ public class Entity_Stats : MonoBehaviour
         float bonusElementalDamage = major.intelligence.getValue();
 
         float highestDamage = fireDamage;
-        if(iceDamage > highestDamage) highestDamage = iceDamage;
-        if(lightningDamage > highestDamage) highestDamage = lightningDamage;
+        elementalType = ElementalType.Fire;
+        if(iceDamage > highestDamage)
+        {
+            highestDamage = iceDamage;
+            elementalType = ElementalType.Ice;
+        }
+        if(lightningDamage > highestDamage)
+        {
+            highestDamage = lightningDamage;
+            elementalType = ElementalType.Lightning;
+        }
 
-        if (highestDamage <= 0) return 0;
+        if (highestDamage <= 0)
+        {
+            elementalType = ElementalType.None;
+            return 0;
+        }
         
         // ý tưởng bonus elemental là lấy full power của elementPower hiện tại và cộng thêm với 50% power của những elementPower khác
         float bonusFire = (fireDamage == highestDamage) ? 0 : fireDamage * .5f;
@@ -93,5 +106,30 @@ public class Entity_Stats : MonoBehaviour
     {
         float finalReduction = offense.armorReduction.getValue() / 100;
         return finalReduction;
+    }
+
+    public float GetElementalResist(ElementalType element)
+    {
+        float baseResistance = 0;
+        float bonusResistance = major.intelligence.getValue() * .5f;
+
+        switch (element)
+        {
+            case ElementalType.Fire:
+                baseResistance = deffense.fireResist.getValue();
+                break;
+            case ElementalType.Ice:
+                baseResistance = deffense.iceResist.getValue();
+                break;
+            case ElementalType.Lightning:
+                baseResistance=deffense.lightningResist.getValue();
+                break;
+        }
+        
+        float resistance = baseResistance + bonusResistance;
+        float resistanceCap = 75f;
+        
+        float finalResistance = Mathf.Clamp(resistance, 0, resistanceCap);
+        return finalResistance;
     }
 }

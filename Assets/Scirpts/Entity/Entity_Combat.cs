@@ -1,10 +1,10 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Entity_Combat : MonoBehaviour
 {
     private Entity_VFX entityVFX;
     private Entity_Stats stat;
-    public float damage;
     
     [Header("target detection")]
     [SerializeField] private Transform target;
@@ -24,9 +24,9 @@ public class Entity_Combat : MonoBehaviour
             
             if (damagAble == null) continue;//skip target, go to next target
 
-            float elementalDamage = stat.GetElementalDamage();
+            float elementalDamage = stat.GetElementalDamage(out ElementalType elemental);
             float damage = stat.GetDamage(out bool isCrit);
-            bool targetGotHit = damagAble.TakeDamage(damage, elementalDamage, transform);
+            bool targetGotHit = damagAble.TakeDamage(damage, elementalDamage, elemental, transform);
             //interface sẽ thay thế nhiệm vụ gọi hàm TakeDamage, cơ chế chính của interface là bắt buộc phải set 1 
             //function cố dịnh cho nó trước và yêu cầu bắt buộc các object nếu muốn được gọi phải chứa function đó 
             //bằng cách getComponent thông qua interface, nó sẽ lấy chính xác và duy nhất function được tạo đó 
