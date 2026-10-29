@@ -1797,16 +1797,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth:
-    baseValue: 100
-  defaultDamage:
-    baseValue: 0
+    baseValue: 1000000
   major:
     strength:
-      baseValue: 30
+      baseValue: 0
     intelligence:
       baseValue: 0
     vitality:
-      baseValue: 7
+      baseValue: 0
     agility:
       baseValue: 0
   offense:
@@ -1816,6 +1814,8 @@ MonoBehaviour:
       baseValue: 150
     critRate:
       baseValue: 100
+    armorReduction:
+      baseValue: 0
     iceDamage:
       baseValue: 0
     fireDamage:
@@ -1824,7 +1824,7 @@ MonoBehaviour:
       baseValue: 0
   deffense:
     armor:
-      baseValue: 0
+      baseValue: 100
     evasion:
       baseValue: 0
     iceResist:
@@ -4998,12 +4998,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth:
-    baseValue: 100
-  defaultDamage:
-    baseValue: 0
+    baseValue: 100000
   major:
     strength:
-      baseValue: 20
+      baseValue: 0
     intelligence:
       baseValue: 0
     vitality:
@@ -5012,10 +5010,12 @@ MonoBehaviour:
       baseValue: 0
   offense:
     damage:
-      baseValue: 0
+      baseValue: 150
     critDamage:
       baseValue: 0
     critRate:
+      baseValue: 0
+    armorReduction:
       baseValue: 0
     iceDamage:
       baseValue: 0

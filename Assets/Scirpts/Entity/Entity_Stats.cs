@@ -17,8 +17,21 @@ public class Entity_Stats : MonoBehaviour
         float totalMaxHealth = baseMaxHealth + bonusMaxHealth;
         return totalMaxHealth;
     }
-
-
+    
+    public float GetEvasion()
+    {
+        float baseEvasion = deffense.evasion.getValue();
+        float bonusEvasion = major.agility.getValue() * .5f;
+        
+        float totalEvasion = baseEvasion + bonusEvasion;
+        float evasionCap = 75;
+        
+        float finalEvasion = Math.Clamp(evasionCap, 0, totalEvasion); //pass the value evasionCap,
+        //the function Clamp() will return evasionCap if its value is in range 0->totalEvasion;
+        //if it is greater than totalEvasion then return totalEvasion, if less than 0 then return 0.
+        return finalEvasion;
+    }
+    
     public float GetDamage(out bool isCrit)
     {
         float baseDamage = offense.damage.getValue();
@@ -38,18 +51,27 @@ public class Entity_Stats : MonoBehaviour
         return outputDamage;
     }
 
-    public float GetEvasion()
+    public float GetElementalDamage()
     {
-        float baseEvasion = deffense.evasion.getValue();
-        float bonusEvasion = major.agility.getValue() * .5f;
+        float fireDamage = offense.fireDamage.getValue();
+        float iceDamage = offense.iceDamage.getValue();
+        float lightningDamage = offense.lightningDamage.getValue();
+        float bonusElementalDamage = major.intelligence.getValue();
+
+        float highestDamage = fireDamage;
+        if(iceDamage > highestDamage) highestDamage = iceDamage;
+        if(lightningDamage > highestDamage) highestDamage = lightningDamage;
+
+        if (highestDamage <= 0) return 0;
         
-        float totalEvasion = baseEvasion + bonusEvasion;
-        float evasionCap = 75;
+        // ý tưởng bonus elemental là lấy full power của elementPower hiện tại và cộng thêm với 50% power của những elementPower khác
+        float bonusFire = (fireDamage == highestDamage) ? 0 : fireDamage * .5f;
+        float bonusIce = (iceDamage == highestDamage) ? 0 : iceDamage * .5f;
+        float bonusLightning = (lightningDamage == highestDamage) ? 0 : lightningDamage * .5f;
+        float weakerElementDamage = bonusFire + bonusIce + bonusLightning;
         
-        float finalEvasion = Math.Clamp(evasionCap, 0, totalEvasion); //pass the value evasionCap,
-        //the function Clamp() will return evasionCap if its value is in range 0->totalEvasion;
-        //if it is greater than totalEvasion then return totalEvasion, if less than 0 then return 0.
-        return finalEvasion;
+        float finalDamage = highestDamage + weakerElementDamage + bonusElementalDamage;
+        return finalDamage;
     }
 
     public float GetArmorMitigation(float armorReduction)
