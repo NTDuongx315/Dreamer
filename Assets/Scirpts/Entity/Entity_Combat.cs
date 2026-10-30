@@ -14,7 +14,7 @@ public class Entity_Combat : MonoBehaviour
     [Header("Status effect details")] 
     [SerializeField] private float defaultDuration = 3f;
     [SerializeField] private float chillSlowMultiplier = 0.5f;
-
+    
     private void Awake()
     {
         entityVFX = GetComponent<Entity_VFX>();
@@ -62,6 +62,12 @@ public class Entity_Combat : MonoBehaviour
         if (elemental == ElementalType.Ice && statusHandler.CanBeApplied(ElementalType.Ice))
         {
             statusHandler.AppliedChillEffect(defaultDuration, chillSlowMultiplier);
+        }
+
+        if (elemental == ElementalType.Fire && statusHandler.CanBeApplied(ElementalType.Fire))
+        {
+            float fireDamage = stat.offense.fireDamage.getValue() * .5f;
+            statusHandler.AppliedBurnEffect(defaultDuration, fireDamage);
         }
     }
 
