@@ -1763,10 +1763,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onDamageMaterial: {fileID: 2100000, guid: d8c0cec9542122842995e9b926771c75, type: 2}
   onDamageVfxDuration: 0.15
-  hitVfxColor: {r: 0.28313985, g: 0.41002387, b: 0.6075471, a: 1}
+  hitVfxColor: {r: 0.29238155, g: 0.5697506, b: 0.7207546, a: 1}
   hitVfx: {fileID: 4117358109760959108, guid: eaec7c41a13f89242ad9aab23d8533e1, type: 3}
   critHitVfx: {fileID: 7082836351017490847, guid: d7e0a2e96eb724d4eab7bb16f682becc, type: 3}
-  chillVfx: {r: 0.2158419, g: 0.38155842, b: 0.4867924, a: 1}
+  chillVfx: {r: 0.30405825, g: 0.70557135, b: 0.82641506, a: 1}
+  fireVfx: {r: 0.8039216, g: 0.24248064, b: 0.09411766, a: 1}
+  lightningVfx: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!114 &1169564288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1786,6 +1788,7 @@ MonoBehaviour:
     m_Bits: 128
   defaultDuration: 3
   chillSlowMultiplier: 0.5
+  electricChargeBuildUp: 0.3
   parryRecover: 0.2
 --- !u!114 &1169564289
 MonoBehaviour:
@@ -1822,9 +1825,9 @@ MonoBehaviour:
     iceDamage:
       baseValue: 40
     fireDamage:
-      baseValue: 20
+      baseValue: 50
     lightningDamage:
-      baseValue: 15
+      baseValue: 60
   deffense:
     armor:
       baseValue: 0
@@ -1848,6 +1851,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46347c84edf89ab4d80531bb24d76955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightningStrikeVfx: {fileID: 4742234162248627276, guid: a6187729bd1cbdc40a238134f792670a, type: 3}
+  curCharge: 0
+  maxCharge: 1
 --- !u!1 &1193625715
 GameObject:
   m_ObjectHideFlags: 0
@@ -4966,6 +4972,7 @@ MonoBehaviour:
     m_Bits: 8
   defaultDuration: 3
   chillSlowMultiplier: 0.5
+  electricChargeBuildUp: 0.3
 --- !u!114 &1838112584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5002,7 +5009,9 @@ MonoBehaviour:
   hitVfxColor: {r: 0.3056603, g: 0.29931644, b: 0.29931644, a: 1}
   hitVfx: {fileID: 4117358109760959108, guid: eaec7c41a13f89242ad9aab23d8533e1, type: 3}
   critHitVfx: {fileID: 7082836351017490847, guid: d7e0a2e96eb724d4eab7bb16f682becc, type: 3}
-  chillVfx: {r: 0.18734777, g: 0.3365125, b: 0.554717, a: 1}
+  chillVfx: {r: 0.17814878, g: 0.51736, b: 0.7207546, a: 1}
+  fireVfx: {r: 1, g: 0.3835408, b: 0, a: 1}
+  lightningVfx: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!114 &1838112586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5064,6 +5073,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46347c84edf89ab4d80531bb24d76955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightningStrikeVfx: {fileID: 4742234162248627276, guid: a6187729bd1cbdc40a238134f792670a, type: 3}
+  curCharge: 0
+  maxCharge: 1
 --- !u!1 &1900444698
 GameObject:
   m_ObjectHideFlags: 0
@@ -5536,6 +5548,8 @@ MonoBehaviour:
   hitVfx: {fileID: 0}
   critHitVfx: {fileID: 0}
   chillVfx: {r: 0, g: 1, b: 1, a: 1}
+  fireVfx: {r: 1, g: 0, b: 0, a: 1}
+  lightningVfx: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -10,12 +10,57 @@ public class Entity_StatusHandler : MonoBehaviour
     private Entity_Health entityHealth;
     private ElementalType currentEffect = ElementalType.None;
 
+    [Header("Electricity Effect")] 
+    [SerializeField] private GameObject lightningStrikeVfx;
+    [SerializeField] private float curCharge;
+    [SerializeField] private float maxCharge = 1;
+    private Coroutine electricityEffectCo;
+
     private void Awake()
     {
         entityHealth = GetComponent<Entity_Health>();
         stats = GetComponent<Entity_Stats>();
         entity = GetComponent<Entity>();
         entityvfx = GetComponent<Entity_VFX>();
+    }
+
+    public void AppliedLightningEffect(float duration, float lightningDamage, float charge)
+    {
+        float lightningResistance = stats.GetElementalResist(ElementalType.Lightning);
+        float reduceCharge = charge * (1 - lightningResistance);
+        curCharge += reduceCharge;
+
+        if (curCharge >= maxCharge)
+        {
+            ReadyToStrike(lightningDamage);
+            StopElectricityEffect();
+            return;
+        }
+        
+        if(electricityEffectCo != null) StopCoroutine(electricityEffectCo);
+        electricityEffectCo = StartCoroutine(ElectricityEffectCo(duration));
+    }
+
+    private void StopElectricityEffect()
+    {
+        currentEffect = ElementalType.Lightning;
+        curCharge = 0;
+        entityvfx.StopAllVfx();
+    }
+
+    private void ReadyToStrike(float lightningDamage)
+    {
+        Instantiate(lightningStrikeVfx, transform.position, Quaternion.identity);
+        entityHealth.ReduceHealth(lightningDamage);
+    }
+
+    private IEnumerator ElectricityEffectCo(float duration)
+    {
+        currentEffect = ElementalType.Lightning;
+        entityvfx.PlayOnStatusVfx(duration, ElementalType.Lightning);
+        
+        yield return new WaitForSeconds(duration);
+        StopElectricityEffect();
     }
 
     public void AppliedBurnEffect(float duration, float fireDamage)
@@ -63,6 +108,8 @@ public class Entity_StatusHandler : MonoBehaviour
 
     public bool CanBeApplied(ElementalType element)
     {
+        if (element == ElementalType.Lightning && currentEffect == ElementalType.Lightning) return true;
+        
         return currentEffect == ElementalType.None;
     }
 }
