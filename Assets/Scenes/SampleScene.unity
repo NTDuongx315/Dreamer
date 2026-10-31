@@ -1804,48 +1804,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca3a0c86a414ef4e85ba5da9791da18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultStatSetup: {fileID: 0}
   resources:
     maxHealth:
       baseValue: 1000
+      mods: []
     healthRegen:
       baseValue: 40
+      mods: []
   major:
     strength:
       baseValue: 0
+      mods: []
     intelligence:
       baseValue: 0
+      mods: []
     vitality:
       baseValue: 0
+      mods: []
     agility:
       baseValue: 0
+      mods: []
   offense:
     attackSpeed:
-      baseValue: 0
+      baseValue: 1
+      mods: []
     damage:
       baseValue: 10
+      mods: []
     critDamage:
       baseValue: 0
+      mods: []
     critRate:
       baseValue: 0
+      mods: []
     armorReduction:
       baseValue: 0
+      mods: []
     iceDamage:
-      baseValue: 40
+      baseValue: 0
+      mods: []
     fireDamage:
-      baseValue: 50
+      baseValue: 0
+      mods: []
     lightningDamage:
-      baseValue: 60
+      baseValue: 0
+      mods: []
   deffense:
     armor:
       baseValue: 0
+      mods: []
     evasion:
       baseValue: 0
+      mods: []
     iceResist:
       baseValue: 0
+      mods: []
     fireResist:
       baseValue: 0
+      mods: []
     lightningResist:
       baseValue: 0
+      mods: []
 --- !u!114 &1169564290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4732,7 +4752,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7cee6ffcd043174b9f20b4579597322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffDuration: 5
+  buffs:
+  - type: 11
+    value: 50
+  - type: 6
+    value: 0.3
+  buffName: Light
+  buffDuration: 20
   canbeUse: 1
   floatingSpeed: 1
   floatingRange: 0.2
@@ -5239,48 +5265,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca3a0c86a414ef4e85ba5da9791da18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultStatSetup: {fileID: 11400000, guid: 3dbf5c58314dddf44a4db1563409eda9, type: 2}
   resources:
     maxHealth:
-      baseValue: 0
+      baseValue: 1000
+      mods: []
     healthRegen:
       baseValue: 0
+      mods: []
   major:
     strength:
       baseValue: 0
+      mods: []
     intelligence:
       baseValue: 0
+      mods: []
     vitality:
       baseValue: 0
+      mods: []
     agility:
       baseValue: 0
+      mods: []
   offense:
     attackSpeed:
-      baseValue: 1.5
+      baseValue: 1
+      mods: []
     damage:
-      baseValue: 100
+      baseValue: 40
+      mods: []
     critDamage:
-      baseValue: 0
+      baseValue: 150
+      mods: []
     critRate:
       baseValue: 0
+      mods: []
     armorReduction:
       baseValue: 0
+      mods: []
     iceDamage:
       baseValue: 0
+      mods: []
     fireDamage:
       baseValue: 0
+      mods: []
     lightningDamage:
       baseValue: 0
+      mods: []
   deffense:
     armor:
-      baseValue: 0
+      baseValue: 10
+      mods: []
     evasion:
       baseValue: 0
+      mods: []
     iceResist:
       baseValue: 0
+      mods: []
     fireResist:
       baseValue: 0
+      mods: []
     lightningResist:
       baseValue: 0
+      mods: []
 --- !u!114 &1838112587
 MonoBehaviour:
   m_ObjectHideFlags: 0

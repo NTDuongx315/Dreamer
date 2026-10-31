@@ -47,6 +47,7 @@ public class Stat
         }
         return finalValue;
     }
+    public void SetBaseValue(float value) => baseValue = value;
 }
 
 // the main idea is given a class StatModifier which contains value (stats of the object +3 damage -2 attackSpeed for example)
