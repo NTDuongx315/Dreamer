@@ -22,6 +22,7 @@ public class PlayerAttackState : PlayerState
         base.Enter();
         comboAttackQueue = false;
         ResetCombo();
+        SyncAttackSpeed();
 
         attackDir = player.moveInput.x != 0 ? (int)player.moveInput.x : player.facingDir;
         

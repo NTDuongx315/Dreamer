@@ -16,6 +16,7 @@ public abstract class PlayerState : EntityState //how EACH state behave
         anim = player.anim;
         rb = player.rb;
         input = player.input;
+        stat = player.stat;
     }
 
     public override void Update()

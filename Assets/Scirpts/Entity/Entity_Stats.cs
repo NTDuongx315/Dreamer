@@ -4,14 +4,14 @@ using Random = UnityEngine.Random;
 
 public class Entity_Stats : MonoBehaviour
 {
-    public Stat maxHealth;
+    public Stat_ResourceGroup resources;
     public Stat_MajorGroup major;
     public Stat_OffensiveGroup offense;
     public Stat_DeffenseGroup deffense;
 
     public float GetMaxHealth()
     {
-        float baseMaxHealth = maxHealth.getValue();
+        float baseMaxHealth = resources.maxHealth.getValue();
         float bonusMaxHealth = major.vitality.getValue() * 5;
         
         float totalMaxHealth = baseMaxHealth + bonusMaxHealth;
