@@ -2,11 +2,20 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+[System.Serializable]
+public class Buff
+{
+    public StatType type;
+    public float value;
+}
 public class Object_Buff : MonoBehaviour
 {
     private SpriteRenderer sr;
-    
-    [Header("Buff details")] 
+    private Entity_Stats statsToModify; //chỉ nên được gọi khi player collide(nhặt được) items.
+
+    [Header("Buff details")]
+    [SerializeField] private Buff[] buffs;
+    [SerializeField] private string buffName;
     [SerializeField] private float buffDuration;
     [SerializeField] private bool canbeUse = true;
     
@@ -30,7 +39,7 @@ public class Object_Buff : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!canbeUse) return;
-
+        statsToModify = collision.GetComponent<Entity_Stats>();
         StartCoroutine(BuffCo(buffDuration));
     }
 
@@ -38,11 +47,18 @@ public class Object_Buff : MonoBehaviour
     {
         canbeUse = false;
         sr.color = Color.clear;
-        Debug.Log("applied" + duration);
+
+        foreach (var buff in buffs)
+        {
+            statsToModify.GetStatByType(buff.type).AddModifier(buff.value,buffName);
+        }
         
         yield return new WaitForSeconds(duration);
-
-        Debug.Log("buff removed");
+    
+        foreach (var buff in buffs)
+        {
+            statsToModify.GetStatByType(buff.type).RemoveModifier(buffName);
+        }
         
         Destroy(gameObject);
     }
