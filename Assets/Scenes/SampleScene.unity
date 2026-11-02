@@ -1804,25 +1804,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca3a0c86a414ef4e85ba5da9791da18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultStatSetup: {fileID: 0}
+  defaultStatSetup: {fileID: 11400000, guid: 3dbf5c58314dddf44a4db1563409eda9, type: 2}
   resources:
     maxHealth:
       baseValue: 1000
       mods: []
     healthRegen:
-      baseValue: 40
-      mods: []
-  major:
-    strength:
-      baseValue: 0
-      mods: []
-    intelligence:
-      baseValue: 0
-      mods: []
-    vitality:
-      baseValue: 0
-      mods: []
-    agility:
       baseValue: 0
       mods: []
   offense:
@@ -1830,10 +1817,10 @@ MonoBehaviour:
       baseValue: 1
       mods: []
     damage:
-      baseValue: 10
+      baseValue: 40
       mods: []
     critDamage:
-      baseValue: 0
+      baseValue: 150
       mods: []
     critRate:
       baseValue: 0
@@ -1852,7 +1839,7 @@ MonoBehaviour:
       mods: []
   deffense:
     armor:
-      baseValue: 0
+      baseValue: 10
       mods: []
     evasion:
       baseValue: 0
@@ -1864,6 +1851,19 @@ MonoBehaviour:
       baseValue: 0
       mods: []
     lightningResist:
+      baseValue: 0
+      mods: []
+  major:
+    strength:
+      baseValue: 10
+      mods: []
+    intelligence:
+      baseValue: 6
+      mods: []
+    vitality:
+      baseValue: 4
+      mods: []
+    agility:
       baseValue: 0
       mods: []
 --- !u!114 &1169564290
@@ -5265,25 +5265,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eca3a0c86a414ef4e85ba5da9791da18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultStatSetup: {fileID: 11400000, guid: 3dbf5c58314dddf44a4db1563409eda9, type: 2}
+  defaultStatSetup: {fileID: 11400000, guid: ef37b6391db59824087be4495c054201, type: 2}
   resources:
     maxHealth:
       baseValue: 1000
       mods: []
     healthRegen:
-      baseValue: 0
-      mods: []
-  major:
-    strength:
-      baseValue: 0
-      mods: []
-    intelligence:
-      baseValue: 0
-      mods: []
-    vitality:
-      baseValue: 0
-      mods: []
-    agility:
       baseValue: 0
       mods: []
   offense:
@@ -5313,7 +5300,7 @@ MonoBehaviour:
       mods: []
   deffense:
     armor:
-      baseValue: 10
+      baseValue: 0
       mods: []
     evasion:
       baseValue: 0
@@ -5325,6 +5312,19 @@ MonoBehaviour:
       baseValue: 0
       mods: []
     lightningResist:
+      baseValue: 0
+      mods: []
+  major:
+    strength:
+      baseValue: 0
+      mods: []
+    intelligence:
+      baseValue: 0
+      mods: []
+    vitality:
+      baseValue: 0
+      mods: []
+    agility:
       baseValue: 0
       mods: []
 --- !u!114 &1838112587

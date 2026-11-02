@@ -80,9 +80,9 @@ public class Entity_Stats : MonoBehaviour
         }
         
         // ý tưởng bonus elemental là lấy full power của elementPower hiện tại và cộng thêm với 50% power của những elementPower khác
-        float bonusFire = (fireDamage == highestDamage) ? 0 : fireDamage * .5f;
-        float bonusIce = (iceDamage == highestDamage) ? 0 : iceDamage * .5f;
-        float bonusLightning = (lightningDamage == highestDamage) ? 0 : lightningDamage * .5f;
+        float bonusFire = (elementalType == ElementalType.Fire) ? 0 : fireDamage * .5f;
+        float bonusIce = (elementalType == ElementalType.Ice) ? 0 : iceDamage * .5f;
+        float bonusLightning = (elementalType == ElementalType.Lightning) ? 0 : lightningDamage * .5f;
         float weakerElementDamage = bonusFire + bonusIce + bonusLightning;
         
         float finalDamage = highestDamage + weakerElementDamage + bonusElementalDamage;

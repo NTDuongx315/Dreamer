@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae3b14fe79e31b47b756007e858bf30, type: 3}
   m_Name: Default Stat Setup - Skeleton
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1000
   healthRegen: 0
   attackSpeed: 1
-  damage: 10
+  damage: 40
   critChance: 0
   critPower: 150
   armorReduction: 0
