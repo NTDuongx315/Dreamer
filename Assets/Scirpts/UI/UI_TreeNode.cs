@@ -1,16 +1,61 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class UI_TreeNode : MonoBehaviour
+public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private Image skillIcon;
+    [SerializeField] private string lockedColorHex = "#9F9797";
+    private Color lastIconColor;
+    public bool isUnlocked;
+    public bool isLocked;
+
+    private void Awake()
     {
-        
+        UpdateIconColor(GetColorByHex(lockedColorHex));
+    }
+    
+    private void Unlock()
+    {
+        //find the player_skillmanager path then unlock skill on skill manager
+        isUnlocked = true;
+        UpdateIconColor(Color.white);
+    }
+    
+    public bool CanBeUnlock()
+    {
+        if (isUnlocked || isLocked) return false;
+        return true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UpdateIconColor(Color color)
     {
-        
+        if (skillIcon == null) return;
+        lastIconColor = skillIcon.color;
+        skillIcon.color = color;
+    }
+    
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if(CanBeUnlock()) Unlock();
+        else Debug.Log("cant be unlock");
+    }
+    
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if(!isUnlocked)
+            UpdateIconColor(Color.white * 0.9f);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    { 
+        if(!isUnlocked)
+            UpdateIconColor(lastIconColor);
+    }
+
+    private Color GetColorByHex(string hex)
+    {
+        ColorUtility.TryParseHtmlString(hex, out Color color);
+        return color;
     }
 }
