@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
+    private UI ui;
+    private RectTransform rect;
+    
     [SerializeField] private Skill_DataSO skillData;
     [SerializeField] private string skillName;
     [SerializeField] private Image skillIcon;
@@ -18,13 +21,16 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private void OnValidate()
     {
         if (skillData == null) return;
-        skillName = skillData.skillName;
+        skillName = skillData.name;
         skillIcon.sprite = skillData.icon;
-        gameObject.name = "UI_TreeNode_" + skillData.skillName;
+        gameObject.name = "UI_TreeNode_" + skillData.name;
     }
 
     private void Awake()
     {
+        ui = GetComponentInParent<UI>();
+        rect = GetComponent<RectTransform>();
+        
         UpdateIconColor(GetColorByHex(lockedColorHex));
     }
     
@@ -56,12 +62,16 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     
     public void OnPointerEnter(PointerEventData eventData)
     {
+        ui.skillToolTip.ShowTooltip(true, rect, skillData);
+        
         if(!isUnlocked)
             UpdateIconColor(Color.white * 0.9f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     { 
+        ui.skillToolTip.ShowTooltip(false, null);
+        
         if(!isUnlocked)
             UpdateIconColor(lastIconColor);
     }

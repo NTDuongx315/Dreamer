@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b98bf15add5984cafec9755d8b4f22, type: 3}
   m_Name: Skill data - Healing Wisp
   m_EditorClassIdentifier: 
-  cost: 0
-  skillName: 
-  description: 
-  icon: {fileID: 0}
+  cost: 2
+  name: Healing Wisp
+  description: When the time echo is killed by enemy, it releases a healing wisp
+    that moves toward the player and heals on contact.
+  icon: {fileID: 43313580, guid: c8fd6b2b0fb0aa54db456725be9ef3ab, type: 3}

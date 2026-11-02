@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b98bf15add5984cafec9755d8b4f22, type: 3}
   m_Name: Skill data - Time Echo
   m_EditorClassIdentifier: 
-  cost: 0
-  skillName: 
-  description: 
-  icon: {fileID: 0}
+  cost: 1
+  name: Time Echo
+  description: 'Create a time echo of self-player
+
+    The echo distracts enemies'
+  icon: {fileID: -1707743461, guid: c8fd6b2b0fb0aa54db456725be9ef3ab, type: 3}
