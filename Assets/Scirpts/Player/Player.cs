@@ -4,6 +4,7 @@ using System;
 
 public class Player : Entity
 {
+    private UI ui;
     public static event Action OnplayerDeath;
     public PlayerInputSet input {get; private set;}
     public PlayerIdleState idleState { get; private set; }
@@ -49,7 +50,10 @@ public class Player : Entity
     protected override void Awake()
     {
         base.Awake();
+
+        ui = FindAnyObjectByType<UI>();
         input = new PlayerInputSet();
+        
         idleState = new PlayerIdleState(this, stateMachine,"idle");
         moveState = new PlayerMoveState(this, stateMachine,"move");
         fallState = new PlayerFallState(this, stateMachine,"jumpFall");
@@ -136,6 +140,7 @@ public class Player : Entity
         
         input.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         input.Player.Movement.canceled += ctx => moveInput = Vector2.zero;
+        input.Player.ToggleSkillTreeUI.performed += ctx => ui.ToggleSkillTree();
     }
 
     private void OnDisable()

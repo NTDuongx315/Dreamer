@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b98bf15add5984cafec9755d8b4f22, type: 3}
+  m_Name: Skill data - Quick Think
+  m_EditorClassIdentifier: 
+  cost: 3
+  name: Quick Think
+  description: neuron activation
+  icon: {fileID: 5432139898559046189, guid: 95caf51252fc6b447bf418118922dd26, type: 3}

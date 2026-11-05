@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum Direction
 {
@@ -19,15 +20,19 @@ public class UI_TreeConnection : MonoBehaviour
     [SerializeField] private RectTransform connectionLength;
     [SerializeField] private RectTransform childNodeConnectionPoint;
 
-    public void DirectConnection(Direction dir, float length)
+    public void DirectConnection(Direction dir, float length, float offset)
     {
         bool shoulBeActive = dir != Direction.None;
         float finalLength = shoulBeActive ? length : 0f;
         float angle = GetDirectionAngle(dir);
-        
-        rotationPoint.localRotation = Quaternion.Euler(0f, 0f, angle);
+
+        rotationPoint.localRotation = Quaternion.Euler(0f, 0f, angle + offset);
         connectionLength.sizeDelta = new Vector2(finalLength, connectionLength.sizeDelta.y);
     }
+    
+    public Image GetConnectionImage() => connectionLength.GetComponent<Image>(); 
+    //use connectionLength because connectionLength is assigned with ConnectionLine object.
+    //and inside ConnectionLine object contains Image and Color of the line only which is what we need to modify.
 
     public Vector2 GetConnectionPoint(RectTransform rect)
     {
