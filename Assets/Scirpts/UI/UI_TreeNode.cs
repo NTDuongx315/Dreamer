@@ -4,16 +4,21 @@ using UnityEngine.UI;
 
 public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
+    private UI_SkillTree skillTree;
     private UI ui;
     private RectTransform rect;
+
+    [Header("Unlok Details")] 
+    public UI_TreeNode[] neededNodes;
+    public UI_TreeNode[] conflictNodes;
+    public bool isUnlocked;
+    public bool isLocked;
     
-    [SerializeField] private Skill_DataSO skillData;
+    public Skill_DataSO skillData;
     [SerializeField] private string skillName;
     [SerializeField] private Image skillIcon;
     [SerializeField] private string lockedColorHex = "#9F9797";
     private Color lastIconColor;
-    public bool isUnlocked;
-    public bool isLocked;
         
     //Onvalidate is a special Unity callback that gets called automatically
     //whenever a serialized value in a MonoBehaviour or ScriptableObject changes in the Inspector.
@@ -28,10 +33,32 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private void Awake()
     {
+        skillTree = GetComponentInParent<UI_SkillTree>();
         ui = GetComponentInParent<UI>();
         rect = GetComponent<RectTransform>();
         
         UpdateIconColor(GetColorByHex(lockedColorHex));
+    }
+    public bool CanBeUnlock()
+    {
+        if (isUnlocked || isLocked) return false;
+        if(!skillTree.EnoughPoint(skillData.cost))
+        {
+            Debug.Log("not enough skill point");
+            return false;
+        }
+
+        foreach (var node in neededNodes) //search for parent node if it is unlocked or not
+        {
+            if (!node.isUnlocked) return false; //if the parent node is still lock so return false
+        }
+
+        foreach (var node in conflictNodes) //search for the other node with the same parent 
+        {
+            if(node.isUnlocked) return false; //if the other node is already unlocked so return false
+        }
+        
+        return true;
     }
     
     private void Unlock()
@@ -39,12 +66,13 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         //find the player_skillmanager path then unlock skill on skill manager
         isUnlocked = true;
         UpdateIconColor(Color.white);
+        skillTree.RemoveSkillPoint(skillData.cost);
+        LockConflictNode();
     }
-    
-    public bool CanBeUnlock()
+
+    private void LockConflictNode()
     {
-        if (isUnlocked || isLocked) return false;
-        return true;
+        foreach (var node in conflictNodes) node.isLocked = true;
     }
 
     private void UpdateIconColor(Color color)
@@ -62,7 +90,7 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     
     public void OnPointerEnter(PointerEventData eventData)
     {
-        ui.skillToolTip.ShowTooltip(true, rect, skillData);
+        ui.skillToolTip.ShowTooltip(true, rect, this);
         
         if(!isUnlocked)
             UpdateIconColor(Color.white * 0.9f);

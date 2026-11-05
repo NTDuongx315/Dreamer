@@ -32,12 +32,12 @@ public class UI_TreeConnection : MonoBehaviour
     public Vector2 GetConnectionPoint(RectTransform rect)
     {
         RectTransformUtility.ScreenPointToLocalPointInRectangle
-            (
-                rect.parent as RectTransform,
-                childNodeConnectionPoint.position,
-                null,
-                out var localPointion
-            );
+        (
+            rect.parent as RectTransform,
+            childNodeConnectionPoint.position,
+            null,
+            out var localPointion
+        );
         return localPointion;
     }
     
@@ -57,3 +57,4 @@ public class UI_TreeConnection : MonoBehaviour
         }
     }
 }
+

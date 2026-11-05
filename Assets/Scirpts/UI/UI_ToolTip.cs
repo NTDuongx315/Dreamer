@@ -7,9 +7,10 @@ public class UI_Tooltip : MonoBehaviour
     private RectTransform rect;
     [SerializeField] private Vector2 offset = new Vector2(300, 20);
 
-    private void Awake() 
+    protected virtual void Awake() 
     {
         rect = GetComponent<RectTransform>();
+        
     }
 
     public virtual void ShowTooltip(bool show, RectTransform targetRect)
