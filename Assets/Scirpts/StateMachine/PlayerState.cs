@@ -8,6 +8,7 @@ public abstract class PlayerState : EntityState //how EACH state behave
 {
     protected Player player;
     protected PlayerInputSet input;
+    protected Player_SkillManager skills;
     
     public PlayerState(Player player,StateMachine stateMachine, string animBoolName) : base(stateMachine, animBoolName)
     {
@@ -17,12 +18,17 @@ public abstract class PlayerState : EntityState //how EACH state behave
         rb = player.rb;
         input = player.input;
         stat = player.stat;
+        skills = player.skills;
     }
 
     public override void Update()
     {
         base.Update();
-        if(input.Player.Dash.WasPressedThisFrame() && CanDash()) stateMachine.changeState(player.dashState);
+        if(input.Player.Dash.WasPressedThisFrame() && CanDash())
+        {
+            skills.dash.SetSkillOnCooldown();
+            stateMachine.changeState(player.dashState);
+        }
         // if(input.Player.Attack.WasPressedThisFrame()) stateMachine.changeState((player.basicAttackState));
     }
 
@@ -34,6 +40,7 @@ public abstract class PlayerState : EntityState //how EACH state behave
 
     private bool CanDash()
     {
+        if(skills.dash.CanUseSkill() == false) return false;
         if(player.wallDectected) return false;
         if(stateMachine.currentState == player.dashState) return false;
         return true;

@@ -7,6 +7,9 @@ public class Player : Entity
     private UI ui;
     public static event Action OnplayerDeath;
     public PlayerInputSet input {get; private set;}
+    public Player_SkillManager skills { get; private set; }
+
+    #region StateVar
     public PlayerIdleState idleState { get; private set; }
     public PlayerMoveState moveState { get; private set; }
     public PlayerFallState fallState { get; private set; }
@@ -17,8 +20,9 @@ public class Player : Entity
     public PlayerAttackState basicAttackState { get; private set; }
     public PlayerJumpAttackState jumpAttackState  { get; private set; }
     public PlayerDeathState deathState { get; private set; }
-    
     public Player_ParryState parryState { get; private set; }
+    
+    #endregion
     
     [Header("AttackDetails")]
     public Vector2[] attackVelocity;
@@ -53,6 +57,7 @@ public class Player : Entity
 
         ui = FindAnyObjectByType<UI>();
         input = new PlayerInputSet();
+        skills = GetComponent<Player_SkillManager>();
         
         idleState = new PlayerIdleState(this, stateMachine,"idle");
         moveState = new PlayerMoveState(this, stateMachine,"move");
