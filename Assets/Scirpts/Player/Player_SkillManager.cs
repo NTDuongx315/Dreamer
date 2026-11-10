@@ -15,6 +15,7 @@ public class Player_SkillManager : MonoBehaviour
         switch (type)
         {
             case SkillType.Dash: return dash;
+            //case SkillType.TimeEcho: return timeEcho;
             default:
                 Debug.Log($"skill type {type} not found");
                 return null;

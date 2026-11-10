@@ -10,7 +10,6 @@ public class UI_Tooltip : MonoBehaviour
     protected virtual void Awake() 
     {
         rect = GetComponent<RectTransform>();
-        
     }
 
     public virtual void ShowTooltip(bool show, RectTransform targetRect)

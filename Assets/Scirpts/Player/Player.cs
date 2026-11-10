@@ -8,6 +8,7 @@ public class Player : Entity
     public static event Action OnplayerDeath;
     public PlayerInputSet input {get; private set;}
     public Player_SkillManager skills { get; private set; }
+    public Player_VFX vfx { get; private set; }
 
     #region StateVar
     public PlayerIdleState idleState { get; private set; }
@@ -58,6 +59,7 @@ public class Player : Entity
         ui = FindAnyObjectByType<UI>();
         input = new PlayerInputSet();
         skills = GetComponent<Player_SkillManager>();
+        vfx = GetComponent<Player_VFX>();
         
         idleState = new PlayerIdleState(this, stateMachine,"idle");
         moveState = new PlayerMoveState(this, stateMachine,"move");

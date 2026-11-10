@@ -9,28 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b05f30c54261b84c806ef06deeb4a03, type: 3}
+  m_Script: {fileID: 11500000, guid: 70b98bf15add5984cafec9755d8b4f22, type: 3}
   m_Name: Skill data - Time lost shard
   m_EditorClassIdentifier: 
-  displayName: Time lost shard
-  description: 'Create a time shard before you dash.
-
-    (Inherits all upgrades
-    of Time shard Ability)'
-  icon: {fileID: 610253578, guid: 7ae0115109b4a6f42a4f7ad59397d09b, type: 3}
   cost: 2
-  unlockedByDefault: 0
   skillType: 0
   upgradeData:
-    upgradeType: 4
+    upgradeType: 3
     cooldown: 3
-    damageScaleData:
-      phyiscal: 1
-      elemental: 1
-      chillDuration: 3
-      chillSlowMulitplier: 0.2
-      burnDuratin: 3
-      burnDamageScale: 1
-      shockDuration: 3
-      shockDamageScale: 1
-      shockCharge: 0.4
+  name: Time lost shard
+  description: sgrr
+  icon: {fileID: -956488907, guid: c8fd6b2b0fb0aa54db456725be9ef3ab, type: 3}

@@ -34,7 +34,7 @@ public class UI_TreeConnection : MonoBehaviour
     //use connectionLength because connectionLength is assigned with ConnectionLine object.
     //and inside ConnectionLine object contains Image and Color of the line only which is what we need to modify.
 
-    public Vector2 GetConnectionPoint(RectTransform rect)
+    public Vector2 GetConnectionPoint(RectTransform rect)  //return về tọa dộ của childNode object để 
     {
         RectTransformUtility.ScreenPointToLocalPointInRectangle
         (
