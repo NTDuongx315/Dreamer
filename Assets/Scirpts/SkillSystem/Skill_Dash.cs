@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Skill_Dash : Skill_Base
 {
+    //[SerializeField] private GameObject shardPrefab;
+    
     public void OnStartEffect()
     {
         if (Unlocked(SkillUpgradeType.Dash_CloneOnStart) || Unlocked(SkillUpgradeType.Dash_CloneOnStartAndArrival))
@@ -19,7 +21,7 @@ public class Skill_Dash : Skill_Base
     
     private void CreateShard()
     {
-        Debug.Log("create shard");
+        Debug.Log("create shard" );
     }
 
     private void CreateClone()
