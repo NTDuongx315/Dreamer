@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class Skill_DataSO : ScriptableObject
 {
     public int cost;
+    public bool unlockbyDefault;
     public SkillType skillType;
     public UpgradeData upgradeData;
     

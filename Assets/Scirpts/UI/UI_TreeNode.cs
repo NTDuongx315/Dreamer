@@ -41,7 +41,21 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         connectHandler = GetComponent<UI_TreeConnectHandler>();
         
         UpdateIconColor(GetColorByHex(lockedColorHex));
+        // if (skillData.unlockbyDefault) Unlock();
+        // why does this line of code not working? By default, the Awake function will always go first which means 
+        // skilltree will be assign, then ui then rect then connectHandler then UpdateIcon and then Unlock. But the problem is
+        // the variable will be assign but not yet get all the info, what does this mean? For example, the inside skillTree,
+        // there is Awake function which contains skillManager, this information will not yet be access and because of that,
+        // tkae a good look at the Unlock function, there is a line "skillTree.skillManager..." which contains skillManager
+        // that not yet have access because of the skillTree which makes the function fail at this point.
+        // To fix this, just make sure the Awake is finished before calling Unlock function so that we use Start.
     }
+
+    private void Start()
+    {
+        if (skillData.unlockbyDefault) Unlock();   
+    }
+    
     public bool CanBeUnlock()
     {
         if (isUnlocked || isLocked) return false;
@@ -88,7 +102,19 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private void LockConflictNode()
     {
-        foreach (var node in conflictNodes) node.isLocked = true;
+        foreach (var node in conflictNodes)
+        {
+            node.isLocked = true;
+            node.LockChildNode();
+        }
+    }
+
+    //tự động đệ quy để lock tất các node con của 1 nhánh bị khóa.
+    public void LockChildNode()
+    {
+        isLocked = true;
+        foreach (var node in connectHandler.GetChildNodes()) 
+            node.LockChildNode();
     }
 
     private void UpdateIconColor(Color color)

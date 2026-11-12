@@ -75,6 +75,7 @@ public class UI_SkillToolTip : UI_Tooltip
 
         foreach (var node in neededNode)
         {
+            if(node == null) continue;
             string nodeColor = node.isUnlocked ? metConditionHex : notMetConditionHex;
             sb.AppendLine($"<color={nodeColor}>- {node.skillData.name}</color>");
         }
@@ -85,6 +86,7 @@ public class UI_SkillToolTip : UI_Tooltip
         sb.AppendLine($"<color={importantnfoHex}> Skill Lock: </color>");
         foreach (var node in conflictNode)
         {
+            if (node == null) continue;
             sb.AppendLine($"<color={importantnfoHex}>- {node.skillData.name}</color>");
         }
         
