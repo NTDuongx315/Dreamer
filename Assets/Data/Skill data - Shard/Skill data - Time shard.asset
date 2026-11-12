@@ -17,7 +17,7 @@ MonoBehaviour:
   skillType: 2
   upgradeData:
     upgradeType: 6
-    cooldown: 0
+    cooldown: 4
   name: Time Shard
   description: fwurhfv
   icon: {fileID: 1903376748, guid: c8fd6b2b0fb0aa54db456725be9ef3ab, type: 3}

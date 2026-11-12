@@ -22,6 +22,23 @@ public class Skill_ObjectBase : MonoBehaviour
             damagable.TakeDamage(1, 1, ElementalType.None, transform);
         }
     }
+
+    protected Transform FindClosestTarget()
+    {
+        Transform target = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (var enemy in EnemiesAround(targetPosition, 10))
+        {
+            float distance = Vector2.Distance(transform.position, enemy.transform.position);
+            if (distance < closestDistance)
+            {
+                target = enemy.transform;
+                closestDistance = distance;
+            }
+        }
+        return target;
+    }
     
     protected void OnDrawGizmos()
     {
