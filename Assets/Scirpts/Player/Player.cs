@@ -129,6 +129,8 @@ public class Player : Entity
         stateMachine.Init(idleState);
     }
     
+    public void TeleportPlayer(Vector3 position) => transform.position = position;
+    
     public void EnterAttackStateWithDelay()
     {
         if (queueAttackCo != null) StopCoroutine(queueAttackCo);

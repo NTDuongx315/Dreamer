@@ -66,6 +66,14 @@ public class Entity_Health : MonoBehaviour, IDamagAble
         UpdateHealthBar();
         if (currentHealth <= 0) Die();
     }
+    
+    public float GetHealthPercent() => currentHealth / entityStats.GetMaxHealth();
+
+    public void SetHealthPercent(float percent)
+    {
+        currentHealth = entityStats.GetMaxHealth() * Mathf.Clamp01(percent);
+        UpdateHealthBar();
+    }        
 
     private void Die()
     {
