@@ -22,18 +22,15 @@ public class Skill_ObjectBase : MonoBehaviour
         {
             IDamagAble damagable = target.GetComponent<IDamagAble>();
             if (damagable == null) continue;
-            
-            ElementalEffectData effect = new ElementalEffectData(playerStats, damageScale);
 
-            float physicDamage = playerStats.GetDamage(out bool isCrit, damageScale.physical);
-            float elementalDamage = playerStats.GetElementalDamage(out ElementalType element, damageScale.element);
+            AttackData attackData = playerStats.GetAttackData(damageScale);
 
-            damagable.TakeDamage(physicDamage, elementalDamage, element, transform);
+            damagable.TakeDamage(attackData.physicalDamage, attackData.elementalDamage, attackData.element , transform);
             
-            if(element != ElementalType.None)
-                target.GetComponent<Entity_StatusHandler>().ApplyStatusEffect(element, effect);
+            if(attackData.element != ElementalType.None)
+                target.GetComponent<Entity_StatusHandler>().ApplyStatusEffect(attackData.element, attackData.effectData);
             
-            usedElement = element;
+            usedElement = attackData.element;
         }
     }
 

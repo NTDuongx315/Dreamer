@@ -11,6 +11,8 @@ public class Entity_Stats : MonoBehaviour
     public Stat_DeffenseGroup deffense;
     public Stat_MajorGroup major;
 
+    public AttackData GetAttackData(DamageScaleData scaleData) => new AttackData(this, scaleData);
+    
     public float GetMaxHealth()
     {
         float baseMaxHealth = resources.maxHealth.getValue();

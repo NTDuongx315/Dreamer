@@ -6,16 +6,17 @@ using UnityEngine.UIElements;
 
 public class Skill_DataSO : ScriptableObject
 {
-    public int cost;
-    public bool unlockbyDefault;
-    public SkillType skillType;
-    public UpgradeData upgradeData;
-    
     [Header("Skill Data")]
     public string name;
     [TextArea]
     public string description;
     public Sprite icon;
+    
+    [Header("Unlock & Upgrade")]
+    public int cost;
+    public bool unlockbyDefault;
+    public SkillType skillType;
+    public UpgradeData upgradeData;
 }
 
 [Serializable]
