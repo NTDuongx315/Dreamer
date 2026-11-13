@@ -22,7 +22,7 @@ public class Skill_Shard : Skill_Base
     [SerializeField] private float maxDistance = 15;
 
     [Header("Health Rewind Shard Upgrade")]
-    [SerializeField] private float savedHeealthPercent;
+    [SerializeField] private float savedHealthPercent;
     
 
     protected override void Awake()
@@ -57,12 +57,12 @@ public class Skill_Shard : Skill_Base
         if(currentShard == null)
         {
             CreateShard();
-            savedHeealthPercent = playerHealth.GetHealthPercent();
+            savedHealthPercent = playerHealth.GetHealthPercent();
         }
         else
         {
             SwapShard();
-            playerHealth.SetHealthPercent(savedHeealthPercent);
+            playerHealth.SetHealthPercent(savedHealthPercent);
             SetSkillOnCooldown();
         }
     }
