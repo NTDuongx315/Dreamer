@@ -67,31 +67,27 @@ public class Entity_VFX : MonoBehaviour
         sr.color = Color.white;
     }
 
-    public void CreateOnHitVfx(Transform target, bool isCrit)
+    public void CreateOnHitVfx(Transform target, bool isCrit, ElementalType element)
     {
         GameObject hitPrefab = isCrit ? critHitVfx : hitVfx;
         GameObject vfx = Instantiate(hitPrefab, target.position, Quaternion.identity);
-        vfx.GetComponentInChildren<SpriteRenderer>().color = hitVfxColor;
+        //vfx.GetComponentInChildren<SpriteRenderer>().color = GetElementColor(element);
 
         if (entity.facingDir == -1 && isCrit) vfx.transform.Rotate(0, 180, 0);
     }
 
-    public void UpdateOnHitColor(ElementalType element)
+    public Color GetElementColor(ElementalType element)
     {
         switch (element)
         {
             case ElementalType.Ice:
-                hitVfxColor = chillVfx;
-                break;
+                return chillVfx;
             case ElementalType.Fire:
-                hitVfxColor = fireVfx;
-                break;
+                return fireVfx;
             case ElementalType.Lightning:
-                hitVfxColor = lightningVfx;
-                break;
-            case ElementalType.None:
-                hitVfxColor = originalHitVfxColor;
-                break;
+                return lightningVfx;
+            default:
+                return originalHitVfxColor;
         }
     }
 

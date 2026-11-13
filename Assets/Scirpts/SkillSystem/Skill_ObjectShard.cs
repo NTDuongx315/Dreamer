@@ -32,15 +32,27 @@ public class Skill_ObjectShard : Skill_ObjectBase
         
         Invoke(nameof(Explode), shard.GetDetonateTime());
     }
+
+    public void SetUpShard(Skill_Shard shard, float detonateTime, bool canMove, float shardSpeed)
+    {
+        this.shardManage = shard;
+        playerStats = shard.player.stat;
+        damageScale = shard.damageScaleData;
+        
+        Invoke(nameof(Explode), detonateTime);
+        
+        if(canMove) MoveTowardsClosestTarget(shardSpeed);
+    }
     
     public void Explode()
     {
         DamageEnemiesInRadius(transform, checkRadius);
         //make a copy of the prefab, place it on the screen follow by transform.position and rotation: Quaternion.identity
-        Instantiate(shardPrefab, transform.position, Quaternion.identity); 
+        SpriteRenderer vfx = Instantiate(shardPrefab, transform.position, Quaternion.identity).GetComponentInChildren<SpriteRenderer>();
+        vfx.color = shardManage.player.vfx.GetElementColor(usedElement);
         
         onExplode?.Invoke();
-        Destroy(gameObject);
+        Destroy(gameObject) ;
     }
     
     private void OnTriggerEnter2D(Collider2D collision)

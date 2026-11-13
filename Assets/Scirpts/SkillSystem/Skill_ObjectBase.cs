@@ -9,6 +9,7 @@ public class Skill_ObjectBase : MonoBehaviour
 
     protected Entity_Stats playerStats;
     protected DamageScaleData damageScale;
+    protected ElementalType usedElement;
 
     protected Collider2D[] EnemiesAround(Transform t, float radius)
     {
@@ -31,6 +32,8 @@ public class Skill_ObjectBase : MonoBehaviour
             
             if(element != ElementalType.None)
                 target.GetComponent<Entity_StatusHandler>().ApplyStatusEffect(element, effect);
+            
+            usedElement = element;
         }
     }
 

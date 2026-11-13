@@ -19,6 +19,7 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public Skill_DataSO skillData;
     [SerializeField] private string skillName;
     [SerializeField] private Image skillIcon;
+    [SerializeField] private int skillCost;
     [SerializeField] private string lockedColorHex = "#9F9797";
     private Color lastIconColor;
         
@@ -30,6 +31,7 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         if (skillData == null) return;
         skillName = skillData.name;
         skillIcon.sprite = skillData.icon;
+        skillCost = skillData.cost;
         gameObject.name = "UI_TreeNode_" + skillData.name;
     }
 

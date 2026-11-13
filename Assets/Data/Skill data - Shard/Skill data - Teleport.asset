@@ -12,12 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b98bf15add5984cafec9755d8b4f22, type: 3}
   m_Name: Skill data - Teleport
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 4
   unlockbyDefault: 0
-  skillType: 0
+  skillType: 2
   upgradeData:
-    upgradeType: 0
-    cooldown: 0
-  name: 
-  description: 
-  icon: {fileID: 0}
+    upgradeType: 9
+    cooldown: 5
+    damageScale:
+      physical: 1
+      element: 1
+      chillDuration: 3
+      chillSlowEffect: 0.2
+      burnDuration: 3
+      burnDamageScale: 1
+      lightningDuration: 3
+      lightningDamageScale: 1
+      lightningCharge: 0.4
+  name: Teleport
+  description: wehjrvbewjrhvjher
+  icon: {fileID: 8957324059118975939, guid: 0f932ce325c906449b01a584f920bbcd, type: 3}
