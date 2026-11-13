@@ -24,6 +24,18 @@ public class Entity_StatusHandler : MonoBehaviour
         entityvfx = GetComponent<Entity_VFX>();
     }
 
+    public void ApplyStatusEffect(ElementalType element, ElementalEffectData effectData)
+    {
+        if (element == ElementalType.Ice && CanBeApplied(ElementalType.Ice))
+            AppliedChillEffect(effectData.chillDuration, effectData.chillSlowEffect);
+        
+        if (element == ElementalType.Fire && CanBeApplied(ElementalType.Fire))
+            AppliedBurnEffect(effectData.burnDuration, effectData.burnDamage);
+        
+        if (element == ElementalType.Lightning && CanBeApplied(ElementalType.Lightning))
+            AppliedLightningEffect(effectData.shockDuration, effectData.shockDamage, effectData.shockCharge);
+    }
+
     public void AppliedLightningEffect(float duration, float lightningDamage, float charge)
     {
         float lightningResistance = stats.GetElementalResist(ElementalType.Lightning);

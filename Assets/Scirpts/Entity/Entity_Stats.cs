@@ -34,7 +34,7 @@ public class Entity_Stats : MonoBehaviour
         return finalEvasion;
     }
     
-    public float GetDamage(out bool isCrit)
+    public float GetDamage(out bool isCrit, float physicScale)
     {
         float baseDamage = offense.damage.getValue();
         float bonusDamage = major.strength.getValue();
@@ -53,7 +53,7 @@ public class Entity_Stats : MonoBehaviour
         return outputDamage;
     }
 
-    public float GetElementalDamage(out ElementalType  elementalType)
+    public float GetElementalDamage(out ElementalType elementalType, float elementScale)
     {
         float fireDamage = offense.fireDamage.getValue();
         float iceDamage = offense.iceDamage.getValue();

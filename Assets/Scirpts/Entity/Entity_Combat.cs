@@ -5,6 +5,8 @@ public class Entity_Combat : MonoBehaviour
 {
     private Entity_VFX entityVFX;
     private Entity_Stats stat;
+
+    [SerializeField] private DamageScaleData basicScale;
     
     [Header("target detection")]
     [SerializeField] private Transform target;
@@ -29,8 +31,8 @@ public class Entity_Combat : MonoBehaviour
             
             if (damagAble == null) continue;//skip target, go to next target
 
-            float elementalDamage = stat.GetElementalDamage(out ElementalType elemental);
-            float damage = stat.GetDamage(out bool isCrit);
+            float elementalDamage = stat.GetElementalDamage(out ElementalType elemental, basicScale.element);
+            float damage = stat.GetDamage(out bool isCrit, basicScale.physical);
             bool targetGotHit = damagAble.TakeDamage(damage, elementalDamage, elemental, transform);
             //interface sẽ thay thế nhiệm vụ gọi hàm TakeDamage, cơ chế chính của interface là bắt buộc phải set 1 
             //function cố dịnh cho nó trước và yêu cầu bắt buộc các object nếu muốn được gọi phải chứa function đó 
@@ -44,37 +46,17 @@ public class Entity_Combat : MonoBehaviour
             //
             // if(targetHealth != null)
             //     targetHealth?.TakeDamage(damage, transform);
+
+            ElementalEffectData effectData = new ElementalEffectData(stat, basicScale);
+            
             if (elemental != ElementalType.None)
-                AppliedStatusEffect(target.transform, elemental);
+                target.GetComponent<Entity_StatusHandler>().ApplyStatusEffect(elemental, effectData);
             
             if(targetGotHit)
             {
                 entityVFX.UpdateOnHitColor(elemental);
                 entityVFX.CreateOnHitVfx(target.transform, isCrit);
             }
-        }
-    }
-
-    public void AppliedStatusEffect(Transform target, ElementalType elemental)
-    {
-        Entity_StatusHandler statusHandler = target.GetComponent<Entity_StatusHandler>();
-        if (statusHandler == null) return;
-
-        if (elemental == ElementalType.Ice && statusHandler.CanBeApplied(ElementalType.Ice))
-        {
-            statusHandler.AppliedChillEffect(defaultDuration, chillSlowMultiplier);
-        }
-
-        if (elemental == ElementalType.Fire && statusHandler.CanBeApplied(ElementalType.Fire))
-        {
-            float fireDamage = stat.offense.fireDamage.getValue() * .3f;
-            statusHandler.AppliedBurnEffect(defaultDuration, fireDamage);
-        }
-
-        if (elemental == ElementalType.Lightning && statusHandler.CanBeApplied(ElementalType.Lightning))
-        {
-            float lightningDamage = stat.offense.lightningDamage.getValue() * .5f;
-            statusHandler.AppliedLightningEffect(defaultDuration, lightningDamage, electricChargeBuildUp);
         }
     }
 
