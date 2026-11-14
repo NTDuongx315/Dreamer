@@ -234,6 +234,7 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: 0394db7c816e3504dac58e0ee39bde48, type: 2}
   skillName: Echo step
   skillIcon: {fileID: 1694244685}
+  skillCost: 2
   lockedColorHex: '#9F9797'
 --- !u!114 &18482667
 MonoBehaviour:
@@ -274,7 +275,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 256.70386, y: -229.70386}
+  m_AnchoredPosition: {x: 843, y: -134}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &27867877
@@ -1100,6 +1101,7 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: 2b500dab70f18c9418539b9ac61c08db, type: 2}
   skillName: Deja Vu
   skillIcon: {fileID: 302364469}
+  skillCost: 3
   lockedColorHex: '#9F9797'
 --- !u!114 &260779326
 MonoBehaviour:
@@ -1140,7 +1142,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -18.360718, y: -235.36072}
+  m_AnchoredPosition: {x: 843, y: -134}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &268932446
@@ -1395,7 +1397,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -145.31049, y: -145.31049}
+  m_AnchoredPosition: {x: 427, y: -458}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &309625637
@@ -1419,6 +1421,7 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: 6a8a78bb1deddd443a610a4f34e64c3c, type: 2}
   skillName: Trace Shard
   skillIcon: {fileID: 1900351769}
+  skillCost: 2
   lockedColorHex: '#9F9797'
 --- !u!1 &348767935
 GameObject:
@@ -1901,10 +1904,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1484879765}
-  - {fileID: 1391271551}
-  - {fileID: 484428551}
   - {fileID: 260779327}
   - {fileID: 18482668}
+  - {fileID: 1391271551}
+  - {fileID: 484428551}
   m_Father: {fileID: 1525023107}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2405,6 +2408,7 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: 950ed3644b09ac14a827354800f20562, type: 2}
   skillName: Time lost shard
   skillIcon: {fileID: 539374658}
+  skillCost: 2
   lockedColorHex: '#9F9797'
 --- !u!114 &484428550
 MonoBehaviour:
@@ -2450,7 +2454,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -18.360718, y: -439.86078}
+  m_AnchoredPosition: {x: 843, y: -134}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &487914576
@@ -2568,6 +2572,7 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: 1ef41464b3d7e724cba88e080dcae4d3, type: 2}
   skillName: Quick Think
   skillIcon: {fileID: 1422694363}
+  skillCost: 3
   lockedColorHex: '#9F9797'
 --- !u!224 &492667998
 RectTransform:
@@ -2589,7 +2594,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -409, y: 118.49994}
+  m_AnchoredPosition: {x: -420, y: -117}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &497015431
@@ -3609,6 +3614,7 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: 32d1c7a65ecbe864386f19dc711fd885, type: 2}
   skillName: Time Shard
   skillIcon: {fileID: 7738582}
+  skillCost: 0
   lockedColorHex: '#9F9797'
 --- !u!224 &608189081
 RectTransform:
@@ -4747,7 +4753,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -559.96735, y: -32.467407}
+  m_AnchoredPosition: {x: -420, y: -117}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &769453094
@@ -4795,6 +4801,7 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: 2ea27463ea8dab340b9afbdded23443e, type: 2}
   skillName: Cleanse
   skillIcon: {fileID: 1035749502}
+  skillCost: 0
   lockedColorHex: '#9F9797'
 --- !u!1 &776827437
 GameObject:
@@ -5186,7 +5193,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -266.51794, y: -23.982117}
+  m_AnchoredPosition: {x: -420, y: -117}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &850557062
@@ -5234,6 +5241,7 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: 87ae8b2b4c9abb94d8424f39a58b5ea4, type: 2}
   skillName: ' Timeless Attack'
   skillIcon: {fileID: 1670982412}
+  skillCost: 2
   lockedColorHex: '#9F9797'
 --- !u!1 &852306851
 GameObject:
@@ -7066,9 +7074,6 @@ MonoBehaviour:
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 128
-  defaultDuration: 3
-  chillSlowMultiplier: 0.5
-  electricChargeBuildUp: 0.3
   parryRecover: 0.2
 --- !u!114 &1169564289
 MonoBehaviour:
@@ -7539,6 +7544,7 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: 2ad40eefed0cfb84498167215363522b, type: 2}
   skillName: Time Echo
   skillIcon: {fileID: 1665481974}
+  skillCost: 1
   lockedColorHex: '#9F9797'
 --- !u!114 &1206718763
 MonoBehaviour:
@@ -7655,6 +7661,7 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: b08904929fd75bd4a862f406f7de81a9, type: 2}
   skillName: Healing Wisp
   skillIcon: {fileID: 251205582}
+  skillCost: 2
   lockedColorHex: '#9F9797'
 --- !u!114 &1236860730
 MonoBehaviour:
@@ -7700,7 +7707,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -221.5, y: 275}
+  m_AnchoredPosition: {x: -420, y: -117}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1242757882
@@ -8065,7 +8072,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 140.36072, y: -366.86078}
+  m_AnchoredPosition: {x: 427, y: -458}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1309455552
@@ -8088,6 +8095,7 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: e45f8e1874d1c1147b632215a5672d87, type: 2}
   skillName: Health Rewind
   skillIcon: {fileID: 1961285476}
+  skillCost: 3
   lockedColorHex: '#9F9797'
 --- !u!1 &1310464761
 GameObject:
@@ -8533,7 +8541,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 256.70386, y: -439.20392}
+  m_AnchoredPosition: {x: 843, y: -134}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1391271552
@@ -8580,6 +8588,7 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: e8b7cc3a9147348439c51b659ad069b0, type: 2}
   skillName: Found fragment
   skillIcon: {fileID: 1117333085}
+  skillCost: 2
   lockedColorHex: '#9F9797'
 --- !u!1 &1422694362
 GameObject:
@@ -8718,7 +8727,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 140.36072, y: -140.36072}
+  m_AnchoredPosition: {x: 427, y: -458}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1427996068
@@ -8742,6 +8751,7 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: b3877ca49e2a3824fab85f68f5095213, type: 2}
   skillName: Teleport
   skillIcon: {fileID: 476193740}
+  skillCost: 4
   lockedColorHex: '#9F9797'
 --- !u!1 &1444508246
 GameObject:
@@ -11350,6 +11360,7 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: 1fe8a7e82edc4a74981c5f1659b80c0d, type: 2}
   skillName: Quick dash
   skillIcon: {fileID: 724732554}
+  skillCost: 0
   lockedColorHex: '#9F9797'
 --- !u!1 &1487704064
 GameObject:
@@ -12670,8 +12681,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 608189081}
-  - {fileID: 1309455551}
   - {fileID: 1946371559}
+  - {fileID: 1309455551}
   - {fileID: 309625636}
   - {fileID: 1427996067}
   m_Father: {fileID: 1525023107}
@@ -13892,7 +13903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1924114249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14053,7 +14064,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -145.31055, y: -359.81055}
+  m_AnchoredPosition: {x: 427, y: -458}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1946371560
@@ -14076,6 +14087,7 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: 761a2895c0348ca48aa6a141f51ec08e, type: 2}
   skillName: Multi Cast
   skillIcon: {fileID: 667444794}
+  skillCost: 2
   lockedColorHex: '#9F9797'
 --- !u!1 &1958149643
 GameObject:
@@ -15434,9 +15446,6 @@ MonoBehaviour:
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 8
-  defaultDuration: 3
-  chillSlowMultiplier: 0.5
-  electricChargeBuildUp: 0.3
 --- !u!114 &2094633452669118043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15723,7 +15732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3358837043377181741
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16001,7 +16010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &5338026340609736052
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16256,7 +16265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &7219323403541375242
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,18 +28,17 @@ public class Player_SwordThrowState : PlayerState
         if (input.Player.Attack.WasPressedThisFrame())
         {
             anim.SetBool("swordThrowPerformed", true);
+            anim.SetBool("swordThrow", false);
         }
 
-        if (input.Player.AimAttack.WasReleasedThisFrame() || triggerCall)
+        if (input.Player.AimAttack.WasReleasedThisFrame() || triggerCall )
             stateMachine.changeState(player.idleState);
-
-        if (input.Player.Attack.WasReleasedThisFrame()) anim.SetBool("swordThrowPerformed", false);
     }
 
     public override void Exit()
     {
         base.Exit();
-        //anim.SetBool("swordThrowPerformed", false);
+        anim.SetBool("swordThrowPerformed", false);
     }
 
     private Vector2 DirectionToMouse()
