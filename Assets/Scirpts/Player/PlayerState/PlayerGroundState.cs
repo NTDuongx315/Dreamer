@@ -11,15 +11,20 @@ public class PlayerGroundState : PlayerState
     {
         base.Update();
         
-        if (rb.linearVelocity.y < 0 && !player.GroundDectected) stateMachine.changeState(player.fallState);
+        if (rb.linearVelocity.y < 0 && !player.GroundDectected) 
+            stateMachine.changeState(player.fallState);
         
-        if (input.Player.Jump.WasPressedThisFrame()) stateMachine.changeState(player.jumpState);
+        if (input.Player.Jump.WasPressedThisFrame()) 
+            stateMachine.changeState(player.jumpState);
         
-        if (input.Player.Attack.WasPressedThisFrame()) stateMachine.changeState((player.basicAttackState));
+        if (input.Player.Attack.WasPressedThisFrame()) 
+            stateMachine.changeState((player.basicAttackState));
         
-        if (input.Player.Parry.WasPressedThisFrame()) stateMachine.changeState(player.parryState);
+        if (input.Player.Parry.WasPressedThisFrame()) 
+            stateMachine.changeState(player.parryState);
 
-        if (input.Player.AimAttack.WasPressedThisFrame()) stateMachine.changeState(player.swordThrowState);
+        if (input.Player.AimAttack.WasPressedThisFrame() && skillManager.swordThrow.CanUseSkill()) 
+            stateMachine.changeState(player.swordThrowState);
     }
 }
  

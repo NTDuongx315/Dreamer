@@ -7,7 +7,7 @@ public class Player : Entity
     private UI ui;
     public static event Action OnplayerDeath;
     public PlayerInputSet input {get; private set;}
-    public Player_SkillManager skills { get; private set; }
+    public Player_SkillManager SkillManager { get; private set; }
     public Player_VFX vfx { get; private set; }
     public Entity_Health health { get; private set; }
     public Entity_StatusHandler statusHandler { get; private set; }
@@ -64,7 +64,7 @@ public class Player : Entity
         vfx = GetComponent<Player_VFX>();
         health = GetComponent<Entity_Health>();
         statusHandler = GetComponent<Entity_StatusHandler>();
-        skills = GetComponent<Player_SkillManager>();
+        SkillManager = GetComponent<Player_SkillManager>();
         
         input = new PlayerInputSet();
         
@@ -160,7 +160,7 @@ public class Player : Entity
         input.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         input.Player.Movement.canceled += ctx => moveInput = Vector2.zero;
         input.Player.ToggleSkillTreeUI.performed += ctx => ui.ToggleSkillTree();
-        input.Player.Spell.performed += ctx => skills.shard.TryUseSkill();
+        input.Player.Spell.performed += ctx => SkillManager.shard.TryUseSkill();
     }
 
     private void OnDisable()

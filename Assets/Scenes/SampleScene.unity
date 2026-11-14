@@ -473,7 +473,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 38846443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b5e8334695e4f84a84c16c258549a29, type: 3}
+  m_Script: {fileID: 11500000, guid: b0446ed79fdc492438739a5df18c992d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &60087105
@@ -1904,10 +1904,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1484879765}
-  - {fileID: 260779327}
-  - {fileID: 18482668}
   - {fileID: 1391271551}
   - {fileID: 484428551}
+  - {fileID: 260779327}
+  - {fileID: 18482668}
   m_Father: {fileID: 1525023107}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5094,6 +5094,7 @@ GameObject:
   - component: {fileID: 835994486}
   - component: {fileID: 835994487}
   - component: {fileID: 835994488}
+  - component: {fileID: 835994489}
   m_Layer: 3
   m_Name: Skills_Holder
   m_TagString: Untagged
@@ -5155,6 +5156,26 @@ MonoBehaviour:
   shardExistDuration: 10
   maxDistance: 15
   savedHealthPercent: 0
+--- !u!114 &835994489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835994485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c981d32bb64a94dac2d2c43cdec8d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillType: 3
+  upgradeType: 11
+  cooldown: 0
+  throwPower: 5
+  swordGravity: 3.5
+  predictionDot: {fileID: 3147481861485545314, guid: f5e241629b550284aa9414dbb44a425f, type: 3}
+  numberOfDots: 20
+  spaceBetweenDots: 0.03
 --- !u!1 &850557060
 GameObject:
   m_ObjectHideFlags: 0
@@ -12682,9 +12703,9 @@ RectTransform:
   m_Children:
   - {fileID: 608189081}
   - {fileID: 1946371559}
-  - {fileID: 1309455551}
   - {fileID: 309625636}
   - {fileID: 1427996067}
+  - {fileID: 1309455551}
   m_Father: {fileID: 1525023107}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
