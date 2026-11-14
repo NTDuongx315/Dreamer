@@ -12,11 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b98bf15add5984cafec9755d8b4f22, type: 3}
   m_Name: Skill data - Deja Vu
   m_EditorClassIdentifier: 
+  name: Deja Vu
+  description: sggsrgrs
+  icon: {fileID: -1070834151, guid: c8fd6b2b0fb0aa54db456725be9ef3ab, type: 3}
   cost: 3
+  unlockbyDefault: 0
   skillType: 0
   upgradeData:
     upgradeType: 2
     cooldown: 3
-  name: Deja Vu
-  description: sggsrgrs
-  icon: {fileID: -1070834151, guid: c8fd6b2b0fb0aa54db456725be9ef3ab, type: 3}
+    damageScale:
+      physical: 1
+      element: 1
+      chillDuration: 3
+      chillSlowEffect: 0.2
+      burnDuration: 3
+      burnDamageScale: 1
+      lightningDuration: 3
+      lightningDamageScale: 1
+      lightningCharge: 0.4
